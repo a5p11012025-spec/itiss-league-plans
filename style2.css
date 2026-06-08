@@ -1,0 +1,26 @@
+body{
+	background-color: #290689;
+	color: white;
+}
+
+th{
+	background-color: green;
+}
+
+td{
+	background-color: #ba3acb;
+}
+
+table{
+	width: 95%;
+	margin-left: 20px;
+	text-align: center;
+}
+
+h3{
+	text-align: center;
+	font-family: cursive;
+	text-decoration: underline;
+	color: red;
+	font-size: 30px	;
+}
