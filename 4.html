@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road to the Victory - Tournament Bracket</title>
+    <style>
+        :root {
+            --bg-color: #1a0202;
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --input-bg: rgba(255, 255, 255, 0.9);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --accent-gold: #e5c158;
+            --accent-gold-dark: #b38f28;
+            --text-color: #ffffff;
+            --text-dark: #111111;
+            --text-muted: #cccccc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif, 'Segoe UI', Tahoma;
+            background: radial-gradient(circle at center, #8a0f0f 0%, #3a0303 50%, #1a0202 100%);
+            color: var(--text-color);
+            padding: 40px 20px;
+            min-width: 1450px;
+            overflow-x: auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            background: linear-gradient(to bottom, #ffffff 0%, var(--accent-gold) 60%, var(--accent-gold-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.9));
+            font-weight: 900;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 10px;
+            font-style: italic;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .bracket-container {
+            display: grid;
+            grid-template-columns: 1fr 380px 1fr;
+            gap: 10px;
+            align-items: center;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        /* Bracket Sides */
+        .bracket-side {
+            display: flex;
+            justify-content: space-between;
+            height: 100%;
+            min-height: 900px;
+        }
+
+        .bracket-side.left {
+            flex-direction: row;
+        }
+
+        .bracket-side.right {
+            flex-direction: row-reverse;
+        }
+
+        /* Rounds Wrapper */
+        .round {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 250px;
+            height: 100%;
+        }
+
+        .round-title {
+            text-align: center;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* Matchup Layout resembling the generated asset capsules */
+        .matchup {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 10px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            position: relative;
+        }
+
+        .team-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 8px 0;
+            gap: 8px;
+        }
+
+        .team-name {
+            flex-grow: 1;
+        }
+
+        /* White Capsule inputs matching the image visual look */
+        .team-name input {
+            background: var(--input-bg);
+            border: 1px solid #ffffff;
+            border-radius: 20px;
+            color: var(--text-dark);
+            width: 100%;
+            font-size: 0.9rem;
+            font-weight: bold;
+            padding: 6px 14px;
+            font-family: Arial, Helvetica, sans-serif;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .team-name input::placeholder {
+            color: #777777;
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .team-name input:focus {
+            outline: 2px solid var(--accent-gold);
+            background: #ffffff;
+        }
+
+        /* Scores for Double Elimination / 2 Legs */
+        .scores {
+            display: flex;
+            gap: 4px;
+        }
+
+        .score-box {
+            width: 32px;
+            height: 28px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .score-box.leg-label {
+            background: transparent;
+            border: none;
+            color: var(--accent-gold);
+            font-size: 0.7rem;
+            height: auto;
+            line-height: 14px;
+            font-weight: bold;
+        }
+
+        .legs-header {
+            display: flex;
+            justify-content: flex-end;
+            gap: 4px;
+            margin-bottom: -2px;
+            padding-right: 2px;
+        }
+
+        /* Center Trophy column */
+        .center-trophy {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .trophy-wrapper {
+            position: relative;
+            background: radial-gradient(circle, rgba(229,193,88,0.2) 0%, rgba(0,0,0,0) 70%);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .center-trophy img {
+            max-width: 100%;
+            height: auto;
+            max-height: 550px;
+            filter: drop-shadow(0px 10px 30px rgba(0,0,0,0.7));
+        }
+
+        .grand-final-label {
+            margin-bottom: -10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* Structural Spacing adjustments to line things up gracefully without breaking layout */
+        .round-2, .round-3 {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Road to the Victory</h1>
+        <p>16 Teams • Double Elimination / Home & Away Aggregate</p>
+    </header>
+
+    <div class="bracket-container">
+        
+        <div class="bracket-side left">
+            <div class="round round-1">
+                <div class="round-title">Round of 16</div>
+                
+                <div class="matchup">
+                    <div class="legs-header">
+                        <div class="score-box leg-label">H</div>
+                        <div class="score-box leg-label">A</div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="Croxs_killer1"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="Mino_jr9"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+
+                <div class="matchup">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="ghost_rider21o"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="jumasalimu592@gmail.com"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+
+                <div class="matchup">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 5"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 6"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+
+                <div class="matchup">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 7"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 8"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="round round-2">
+                <div class="round-title">Quarter Finals</div>
+                
+                <div class="matchup" style="margin-bottom: 60px; margin-top: 40px;">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner Match 1"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner Match 2"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+
+                <div class="matchup" style="margin-top: 60px; margin-bottom: 40px;">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner Match 3"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner Match 4"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="round round-3">
+                <div class="round-title">Semi Finals</div>
+                
+                <div class="matchup" style="margin-bottom: 180px;">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner QF 1" ></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner QF 2"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="center-trophy">
+            <div class="grand-final-label">The Final</div>
+            <div class="trophy-wrapper">
+                <img src="t.png" alt="Victory Trophy">
+            </div>
+        </div>
+
+        
+
+        <div class="bracket-side right">
+            <div class="round round-1">
+                <div class="round-title">Round of 16</div>
+                
+                <div class="matchup">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 9"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 10"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+
+                <div class="matchup">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 11"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 12"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+
+                <div class="matchup">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 13"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 14"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+
+                <div class="matchup">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 15"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" value="TEAM 16"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="round round-2">
+                <div class="round-title">Quarter Finals</div>
+                
+                <div class="matchup" style="margin-bottom: 60px; margin-top: 40px;">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner Match 5"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner Match 6"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+
+                <div class="matchup" style="margin-top: 60px; margin-bottom: 40px;">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner Match 7"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner Match 8"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="round round-3">
+                <div class="round-title">Semi Finals</div>
+                
+                <div class="matchup" style="margin-bottom: 180px;">
+                    <div class="legs-header"><div class="score-box leg-label">H</div><div class="score-box leg-label">A</div></div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner QF 3"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name"><input type="text" placeholder="Winner QF 4"></div>
+                        <div class="scores"><input type="text" class="score-box"><input type="text" class="score-box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
