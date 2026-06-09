@@ -3,10 +3,17 @@ h3{
 	font-family: cursive;
 	text-decoration: underline;
 	color: green;
-	font-size: 30px	;
+	font-size: 40px	;
 }
 
 body{
 	background-color: #d1df11;
 	color: grey;
+}
+
+div{
+	color: blue;
+	text-decoration: underline;
+	text-align: center;
+	font-size: 30PX;
 }
