@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Football League - 72 Match Schedule</title>
+    <style>
+        :root {
+            --bg-color: #0b0e14;
+            --card-bg: #151a24;
+            --accent-color: #00ff88;
+            --accent-blue: #00d4ff;
+            --text-color: #f0f4f8;
+            --text-muted: #8a99ad;
+            --border-color: #232b38;
+            --hover-color: #1c2331;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h1 {
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .leg-title {
+            background: linear-gradient(90deg, #1e293b, #0f172a);
+            color: var(--accent-blue);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            margin: 30px 0 20px 0;
+            border-left: 5px solid var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .matchday-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+        }
+
+        .matchday-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .matchday-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .bye-tag {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .bye-tag span {
+            color: #ffb703;
+            font-weight: bold;
+        }
+
+        table.schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table.schedule-table th, 
+        table.schedule-table td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table.schedule-table th {
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        table.schedule-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background-color 0.2s ease;
+        }
+
+        table.schedule-table tr:last-child {
+            border-bottom: none;
+        }
+
+        table.schedule-table tr:hover {
+            background-color: var(--hover-color);
+        }
+
+        .match-id {
+            color: var(--text-muted);
+            font-weight: bold;
+            width: 80px;
+        }
+
+        .team-badge {
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #2a3447;
+            color: #c0caf5;
+            margin-left: 6px;
+            display: inline-block;
+        }
+
+        .player-name {
+            font-weight: 600;
+        }
+
+        .username {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            display: block;
+        }
+
+        .vs-cell {
+            text-align: center !important;
+            font-weight: bold;
+            color: var(--accent-color);
+            width: 60px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            table.schedule-table th, 
+            table.schedule-table td {
+                padding: 8px 10px;
+                font-size: 0.9rem;
+            }
+            .username {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>E-Football League Schedule</h1>
+        <div class="subtitle">9 Players • Double Round-Robin • 72 Total Matches</div>
+    </header>
+
+    <div class="leg-title">First Leg (Home Matches - Round 1 to 9)</div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 1</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#01</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#02</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#03</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#04</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 2</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#05</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#06</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#07</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#08</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 3</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#09</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#10</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#11</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#12</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 4</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#13</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#14</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#15</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#16</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 5</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#17</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#18</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#19</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#20</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 6</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#21</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#22</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#23</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#24</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 7</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#25</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#26</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#27</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#28</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 8</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#29</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#30</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#31</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#32</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 9</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#33</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#34</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#35</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#36</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="leg-title">Second Leg (Away Matches - Round 10 to 18)</div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 10</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#37</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#38</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#39</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#40</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 11</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#41</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#42</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#43</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#44</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 12</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#45</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#46</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#47</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#48</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 13</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#49</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#50</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#51</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#52</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 14</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#53</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#54</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#55</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#56</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 15</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#57</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#58</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#59</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#60</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 16</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#61</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#62</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#63</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#64</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 17</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#65</td>
+                    <td>
+                        <span class="player-name">Juma Salum</span> <span class="team-badge">Arsenal</span>
+                        <span class="username">jumasalimu592@gmail.com</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#66</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#67</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#68</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="matchday-card">
+        <div class="matchday-header">
+            <div class="matchday-title">Matchday 18</div>
+            
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">Match</th>
+                    <th style="width: 42%;">Home Player</th>
+                    <th style="width: 6%; text-align: center;">VS</th>
+                    <th style="width: 42%;">Away Player</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="match-id">#69</td>
+                    <td>
+                        <span class="player-name">Omaya Ismail</span> <span class="team-badge">Paris Saint-Germain</span>
+                        <span class="username">ghost_rider21o</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Rahim Ibrahim</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Mino_jr9</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#70</td>
+                    <td>
+                        <span class="player-name">Fey Kassim</span> <span class="team-badge">F2YLAH.XUHF</span>
+                        <span class="username">M_olise07</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdallah Joseph</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">AJstyles01</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#71</td>
+                    <td>
+                        <span class="player-name">Adil Mohammed</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">MGANGA_ASILIA</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Yasir Suessy</span> <span class="team-badge">Manchester United</span>
+                        <span class="username">Onix9721</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="match-id">#72</td>
+                    <td>
+                        <span class="player-name">Nemeyro Musiala</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">numerous.pe</span>
+                    </td>
+                    <td class="vs-cell">VS</td>
+                    <td>
+                        <span class="player-name">Abdul-Rahman Kassongo</span> <span class="team-badge">FC. Barcelona</span>
+                        <span class="username">Elmilany</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
+efootball_league_schedule_no_byes.html
+Displaying efootball_league_schedule_no_byes.html.
