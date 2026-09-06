@@ -4,6 +4,13 @@ h3{
 	text-decoration: underline;
 	color: green;
 	font-size: 40px	;
+	color: green; /* Main text color */
+  text-shadow: 
+    -1px -1px 0 white,
+     1px -1px 0 white,
+    -1px  1px 0 white,
+     1px  1px 0 white; /* Outline Color */
+
 }
 
 body{
@@ -12,7 +19,7 @@ body{
 }
 
 div{
-	color: blue;
+	color: white;
 	text-decoration: underline;
 	text-align: center;
 	font-size: 30PX;
