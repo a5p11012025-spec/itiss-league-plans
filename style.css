@@ -2,7 +2,7 @@ h3{
 	text-align: center;
 	font-family: cursive;
 	text-decoration: underline;
-	color: blue;
+	color: gold;
 	font-size: 30px	;
 }
 
@@ -29,6 +29,17 @@ td{
 	background-color: lightcyan;
 }
 
-body{
+body{ 
 	background-color: #ff4d4d;
 }
+
+li{
+	font-size: 20px;
+	color: whitesmoke;
+}
+
+
+
+backdrop-filter: blur(4px);
+background-position: center;
+background-size: cover;
